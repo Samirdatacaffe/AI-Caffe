@@ -1,0 +1,262 @@
+/* ==================== Full Screen ==================== */
+.screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 460px;
+  padding: 0 24px;
+}
+
+/* ==================== Email Icon ==================== */
+.iconWrapper {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.iconCircle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+.planeIcon {
+  transform: rotate(-5deg);
+}
+
+.iconDots {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-hover);
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes dotBounce {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ==================== Heading ==================== */
+.heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.subtitle strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ==================== OTP Row ==================== */
+.otpRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.otpInput {
+  width: 56px;
+  height: 64px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.3s;
+  caret-color: var(--gold);
+}
+
+.otpInput:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+}
+
+.otpFilled {
+  border-color: var(--text-muted);
+}
+
+.otpError {
+  border-color: #ef4444;
+}
+
+/* ==================== Error ==================== */
+.errorText {
+  font-size: 13px;
+  color: #ef4444;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+/* ==================== Success ==================== */
+.successBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #dcfce7;
+  border: 1.5px solid #22c55e;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 15px;
+  color: #166534;
+  font-weight: 500;
+  margin-bottom: 24px;
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== Confirm Button ==================== */
+.confirmBtn {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  border: 1.5px solid var(--border-hover);
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+}
+
+.confirmBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ==================== Spinner ==================== */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== Resend ==================== */
+.resendRow {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.resendTimer {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.resendBtn:hover {
+  opacity: 0.8;
+}
+
+/* ==================== Back ==================== */
+.backBtn {
+  margin-top: 32px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+}
+
+/* ==================== Animations ==================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 480px) {
+  .heading { font-size: 26px; }
+  .otpInput { width: 46px; height: 54px; font-size: 20px; }
+  .otpRow { gap: 8px; }
+}

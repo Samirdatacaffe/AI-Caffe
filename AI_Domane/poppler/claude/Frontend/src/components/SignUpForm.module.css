@@ -1,0 +1,503 @@
+/* ==================== Screen ==================== */
+.screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary, #f5f0ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow-y: auto;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 680px;
+  padding: 40px 24px;
+}
+
+/* ==================== Logo ==================== */
+.logoRow {
+  margin-bottom: 32px;
+}
+
+.logo {
+  height: 44px;
+  object-fit: contain;
+}
+
+/* ==================== Progress Bar ==================== */
+.progressBar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.stepCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.progressDone .stepCircle {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #fff;
+}
+
+.progressActive .stepCircle {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #fff;
+}
+
+.stepLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
+}
+
+.progressDone .stepLabel {
+  color: #22c55e;
+}
+
+.progressActive .stepLabel {
+  color: #1c1917;
+}
+
+.progressLine {
+  flex: 1;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 6px;
+  margin-bottom: 22px;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progressLineFill {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+  border-radius: 1px;
+  transition: width 0.5s ease-out;
+}
+
+.progressLineFillActive {
+  width: 100%;
+}
+
+/* ==================== Card ==================== */
+.card {
+  width: 100%;
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border, #e5dfd6);
+  border-radius: 20px;
+  padding: 40px 44px 36px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.stepContent {
+  animation: stepIn 0.4s ease-out both;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.cardTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-primary, #1c1917);
+  margin-bottom: 6px;
+}
+
+.cardSubtitle {
+  font-size: 14px;
+  color: var(--text-muted, #78716c);
+  margin-bottom: 28px;
+}
+
+/* ==================== API Error Banner ==================== */
+.apiErrorBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #b91c1c;
+  font-weight: 500;
+  animation: shakeIn 0.4s ease-out;
+}
+
+.apiErrorBanner span {
+  flex: 1;
+}
+
+.apiErrorClose {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #b91c1c;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.apiErrorClose:hover {
+  opacity: 1;
+}
+
+@keyframes shakeIn {
+  0% { transform: translateX(-8px); opacity: 0; }
+  25% { transform: translateX(6px); }
+  50% { transform: translateX(-4px); }
+  75% { transform: translateX(2px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ==================== Inputs ==================== */
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.inputRow .inputGroup {
+  margin-bottom: 0;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary, #57534e);
+  margin-bottom: 7px;
+  letter-spacing: 0.2px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1.5px solid var(--border, #d5d0c8);
+  border-radius: 14px;
+  background: var(--bg-surface, #fff);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  height: 52px;
+}
+
+.inputWrapper:focus-within {
+  border-color: #1c1917;
+  box-shadow: 0 0 0 3px rgba(28, 25, 23, 0.06);
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.inputFilled {
+  border-color: var(--text-muted, #a8a29e);
+}
+
+.inputSuccess {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08) !important;
+}
+
+.inputIcon {
+  color: var(--text-placeholder, #a8a29e);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary, #1c1917);
+  outline: none;
+  height: 100%;
+}
+
+.input::placeholder {
+  color: var(--text-placeholder, #a8a29e);
+}
+
+.eyeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted, #a8a29e);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.eyeBtn:hover {
+  color: var(--text-primary, #1c1917);
+}
+
+.checkMark {
+  flex-shrink: 0;
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.errorMsg {
+  display: block;
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 5px;
+  padding-left: 2px;
+}
+
+/* ==================== Email Badge ==================== */
+.emailBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-muted, #78716c);
+  margin-bottom: 24px;
+}
+
+/* ==================== Password Strength ==================== */
+.strengthRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.strengthBar {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.strengthSeg {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.strengthLabel {
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 45px;
+}
+
+/* ==================== Requirements ==================== */
+.requirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-top: 10px;
+}
+
+.reqItem {
+  font-size: 12px;
+  color: var(--text-placeholder, #a8a29e);
+  transition: color 0.2s;
+}
+
+.reqMet {
+  color: #22c55e;
+}
+
+/* ==================== Buttons ==================== */
+.primaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #1c1917;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-height: 50px;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted, #78716c);
+  background: none;
+  border: 1.5px solid var(--border, #d5d0c8);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  border-color: var(--text-muted, #a8a29e);
+  color: var(--text-primary, #1c1917);
+}
+
+/* ==================== Spinner ==================== */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== Login Link ==================== */
+.loginLink {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-muted, #78716c);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.loginLink strong {
+  color: var(--text-primary, #1c1917);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.loginLink:hover strong {
+  opacity: 0.7;
+}
+
+/* ==================== Success Overlay ==================== */
+.successOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: successPop 0.5s ease-out;
+}
+
+@keyframes successPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.successTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-primary, #1c1917);
+}
+
+.successSubtitle {
+  font-size: 15px;
+  color: var(--text-muted, #78716c);
+}
+
+/* ==================== Animations ==================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 520px) {
+  .container { padding: 24px 16px; }
+  .card { padding: 28px 20px; }
+  .inputRow { grid-template-columns: 1fr; }
+  .cardTitle { font-size: 22px; }
+  .requirements { grid-template-columns: 1fr; }
+}

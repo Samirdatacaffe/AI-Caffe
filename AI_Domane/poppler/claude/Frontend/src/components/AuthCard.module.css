@@ -1,0 +1,235 @@
+.wrapper {
+  width: 400px;
+}
+
+.card {
+  background: var(--bg-surface);
+  border-radius: 22px;
+  padding: 32px 36px;
+  border: 1px solid var(--border);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  animation: cardSlideIn 0.6s ease-out 0.3s both;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(217, 119, 6, 0.2);
+}
+
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-hover);
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.googleBtn:hover {
+  background: var(--bg-surface-hover);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.dividerText {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1.5px solid var(--border-hover);
+  border-radius: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  margin-bottom: 12px;
+  transition: border-color 0.15s, background 0.3s, color 0.3s;
+}
+
+.emailInput:focus {
+  border-color: var(--gold) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+}
+
+.emailBtn {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  border: 1.5px solid var(--border-hover);
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s, background 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+}
+
+.emailBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.emailBtnDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ==================== Error & Success ==================== */
+.errorText {
+  font-size: 13px;
+  color: #dc2626;
+  margin: -4px 0 10px;
+  padding-left: 4px;
+}
+
+.successBox {
+  background: #dcfce7;
+  border: 1.5px solid #22c55e;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #166534;
+  text-align: center;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.devCodeBox {
+  background: #fef9c3;
+  border: 1.5px solid #eab308;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #854d0e;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.devCodeBox strong {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #1c1917;
+}
+
+/* ==================== Loading Spinner ==================== */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== Verification Step ==================== */
+.verifyHeading {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.verifySubtext {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.verifySubtext strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.resendText {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.resendLink {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.resendLink:hover {
+  color: var(--gold);
+}
+
+/* ==================== Download Button ==================== */
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-hover);
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.downloadBtn:hover {
+  background: var(--bg-surface-hover);
+}

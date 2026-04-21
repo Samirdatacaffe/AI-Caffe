@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p app/modules/rag/tools)",
+      "Bash(rm -f app/modules/rag/controllers/rag_controller.py)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"from app.main import app; print\\(''Import OK — app created:'', app.title\\)\")",
+      "Bash(python -m uvicorn app.main:app --host 0.0.0.0 --port 8000)"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+import pg from 'pg';
+
+const { Pool } = pg;
+
+let pool: pg.Pool | null = null;
+let useMemory = false;
+
+// Try to connect to PostgreSQL, fall back to in-memory
+try {
+  pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  pool.on('error', () => {
+    console.warn('[DB] Connection lost, switching to in-memory storage');
+    useMemory = true;
+  });
+} catch {
+  useMemory = true;
+}
+
+// In-memory fallback storage
+const memoryStore = {
+  users: new Map<string, Record<string, unknown>>(),
+  pending: new Map<string, Record<string, unknown>>(),
+  sessions: new Map<string, Record<string, unknown>[]>(),
+};
+
+export { memoryStore, useMemory };
+
+export const db = {
+  query: async (text: string, params?: unknown[]) => {
+    if (useMemory || !pool) {
+      throw new Error('DB_NOT_AVAILABLE');
+    }
+    return pool.query(text, params);
+  },
+};
+
+// Test connection on startup
+export const testConnection = async (): Promise<boolean> => {
+  if (!pool) {
+    useMemory = true;
+    return false;
+  }
+  try {
+    await pool.query('SELECT 1');
+    return true;
+  } catch {
+    useMemory = true;
+    return false;
+  }
+};

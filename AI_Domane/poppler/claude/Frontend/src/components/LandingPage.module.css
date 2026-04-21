@@ -1,0 +1,741 @@
+/* ==================== Page ==================== */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #e8ecf1 0%, #d5dce6 40%, #c8d0db 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==================== Navbar ==================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.brandWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 42px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.3px;
+}
+
+.navCenter {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navLink {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #1e293b;
+}
+
+.navLinkActive {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navSignUpBtn {
+  padding: 10px 28px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navSignUpBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+}
+
+.navSignInBtn {
+  padding: 10px 28px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #475569;
+  background: transparent;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.navSignInBtn:hover {
+  border-color: #94a3b8;
+  color: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* ==================== Hero ==================== */
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 48px 60px;
+  position: relative;
+  z-index: 2;
+  gap: 40px;
+}
+
+.heroLeft {
+  max-width: 520px;
+  animation: fadeUp 0.8s ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== Title ==================== */
+.titleBlock {
+  margin-bottom: 24px;
+}
+
+.titleLine1 {
+  display: block;
+  font-size: 56px;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.titleLine2 {
+  display: block;
+  font-size: 56px;
+  font-weight: 300;
+  font-style: italic;
+  color: #64748b;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.description {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 420px;
+}
+
+/* ==================== What is AICaffe ==================== */
+.whatSection {
+  margin-bottom: 32px;
+  padding: 24px 28px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  max-width: 480px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  animation: cardFadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.whatTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #1e293b 0%, #6366f1 50%, #1e293b 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.typeWriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1.8s steps(17) 0.6s both;
+  max-width: 0;
+}
+
+@keyframes typing {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+.cursor {
+  display: inline-block;
+  color: #6366f1;
+  font-weight: 300;
+  animation: blink 0.8s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.whatText {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.whatText strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* ==================== Buttons ==================== */
+.heroBtns {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.signUpBtn {
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
+}
+
+.signUpBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.35);
+}
+
+.signInBtn {
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #475569;
+  background: transparent;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.signInBtn:hover {
+  border-color: #94a3b8;
+  color: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* ==================== Hero Right — Animated AI Chip ==================== */
+.heroRight {
+  flex: 0 0 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: chipIn 1s ease-out 0.3s both;
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: scale(0.85) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.chipScene {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* ── Orbit Ring ── */
+.orbitRing {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 50%;
+  z-index: 1;
+  animation: orbitSpin 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.orbitDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6), 0 0 24px rgba(99, 102, 241, 0.3);
+  animation: orbitDotPulse 2s ease-in-out infinite;
+}
+
+.orbitDot:nth-child(2) {
+  top: auto;
+  bottom: -4px;
+  left: 50%;
+  animation-delay: -0.7s;
+}
+
+.orbitDot:nth-child(3) {
+  top: 50%;
+  left: -4px;
+  margin-top: -4px;
+  margin-left: 0;
+  animation-delay: -1.4s;
+}
+
+@keyframes orbitSpin {
+  from { transform: rotateX(65deg) rotateZ(0deg); }
+  to { transform: rotateX(65deg) rotateZ(360deg); }
+}
+
+@keyframes orbitDotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+/* ── Energy Rings (expanding pulses) ── */
+.energyRing {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  z-index: 0;
+  animation: energyExpand 4.5s ease-out infinite;
+}
+
+@keyframes energyExpand {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+    border-color: rgba(139, 92, 246, 0);
+  }
+}
+
+/* ── Circuit traces ── */
+.circuitTraces {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.tracePath {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawTrace 1.5s ease-out forwards;
+}
+
+.traceNode {
+  opacity: 0;
+  animation: nodeAppear 0.4s ease-out 1.2s forwards;
+}
+
+@keyframes drawTrace {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes nodeAppear {
+  to { opacity: 1; }
+}
+
+/* ── Flowing data dots on traces ── */
+.flowDot {
+  opacity: 0;
+  animation: flowDotAppear 0.5s ease-out 1.8s forwards;
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.7));
+}
+
+@keyframes flowDotAppear {
+  to { opacity: 0.85; }
+}
+
+/* ── Floating particles ── */
+.particleField {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.7), rgba(139, 92, 246, 0.3));
+  border-radius: 50%;
+  left: var(--x);
+  top: var(--y);
+  animation: particleFloat 5s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.3);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-8px, -25px) scale(0.8);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(12px, -10px) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* ── Platform (3D base) ── */
+.chipPlatform {
+  position: absolute;
+  bottom: 60px;
+  width: 340px;
+  height: 44px;
+  background: linear-gradient(180deg, #b0bec5 0%, #90a4ae 100%);
+  border-radius: 6px;
+  transform: perspective(600px) rotateX(55deg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+}
+
+.chipPlatformInner {
+  position: absolute;
+  inset: 4px;
+  background: linear-gradient(180deg, #cfd8dc 0%, #b0bec5 100%);
+  border-radius: 4px;
+}
+
+/* ── Main chip body ── */
+.chipBody {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  z-index: 2;
+  animation: chipFloat 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.chipSceneHovered .chipBody {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.03);
+}
+
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ── Chip face (center) ── */
+.chipFace {
+  position: absolute;
+  inset: 28px;
+  background: linear-gradient(145deg, #78909c 0%, #546e7a 50%, #455a64 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #90a4ae;
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(120, 144, 156, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.chipSceneHovered .chipFace {
+  box-shadow:
+    0 0 40px rgba(99, 102, 241, 0.35),
+    0 0 80px rgba(99, 102, 241, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* ── Scan line across chip face ── */
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.05) 20%,
+    rgba(99, 102, 241, 0.4) 50%,
+    rgba(99, 102, 241, 0.05) 80%,
+    transparent 100%
+  );
+  z-index: 1;
+  animation: scanMove 3s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+@keyframes scanMove {
+  0% { top: -3px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: calc(100% + 3px); opacity: 0; }
+}
+
+.chipText {
+  font-size: 72px;
+  font-weight: 700;
+  color: #eceff1;
+  letter-spacing: 4px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  transition: text-shadow 0.3s ease;
+}
+
+.chipSceneHovered .chipText {
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(99, 102, 241, 0.5),
+    0 0 60px rgba(99, 102, 241, 0.2);
+}
+
+/* ── Chip pins ── */
+.chipPins {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+}
+
+.pin {
+  background: linear-gradient(180deg, #cfd8dc, #90a4ae);
+  border-radius: 1px;
+  animation: pinGlow 2.5s ease-in-out infinite;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chipSceneHovered .pin {
+  background: linear-gradient(180deg, #c7d2fe, #818cf8);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+}
+
+@keyframes pinGlow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 6px rgba(120, 200, 255, 0.4); }
+}
+
+.chipPinsTop {
+  top: 0;
+  left: 30px;
+  right: 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  transform: translateY(-10px);
+}
+
+.chipPinsTop .pin {
+  width: 3px;
+  height: 12px;
+}
+
+.chipPinsBottom {
+  bottom: 0;
+  left: 30px;
+  right: 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  transform: translateY(10px);
+}
+
+.chipPinsBottom .pin {
+  width: 3px;
+  height: 12px;
+}
+
+.chipPinsLeft {
+  left: 0;
+  top: 30px;
+  bottom: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(-10px);
+}
+
+.chipPinsLeft .pin {
+  width: 12px;
+  height: 3px;
+}
+
+.chipPinsRight {
+  right: 0;
+  top: 30px;
+  bottom: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(10px);
+}
+
+.chipPinsRight .pin {
+  width: 12px;
+  height: 3px;
+}
+
+/* ── Glow under chip ── */
+.chipGlow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120, 200, 255, 0.15) 0%, transparent 70%);
+  z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+  transition: background 0.3s ease;
+}
+
+.chipSceneHovered .chipGlow {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ==================== Hover intensification on whole scene ==================== */
+.chipSceneHovered .orbitRing {
+  border-color: rgba(99, 102, 241, 0.3);
+  animation-duration: 12s;
+}
+
+.chipSceneHovered .energyRing {
+  border-color: rgba(99, 102, 241, 0.5);
+  animation-duration: 3s;
+}
+
+.chipSceneHovered .tracePath {
+  stroke: #818cf8;
+}
+
+.chipSceneHovered .traceNode {
+  fill: #6366f1;
+}
+
+.chipSceneHovered .flowDot {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.9));
+}
+
+.chipSceneHovered .particle {
+  animation-duration: 3s;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 1100px) {
+  .hero { flex-direction: column; padding: 20px 20px 40px; text-align: center; }
+  .heroLeft { max-width: 100%; }
+  .titleLine1, .titleLine2 { font-size: 42px; }
+  .description { max-width: 100%; margin: 0 auto 28px; }
+  .whatSection { margin: 0 auto 28px; }
+  .heroBtns { justify-content: center; }
+  .heroRight { flex: none; margin-top: 20px; }
+  .chipScene { width: 340px; height: 340px; }
+  .chipBody { width: 170px; height: 170px; }
+  .chipFace { inset: 18px; }
+  .chipText { font-size: 42px; }
+  .orbitRing { width: 260px; height: 260px; }
+  .energyRing { width: 180px; height: 180px; }
+  .chipPlatform { width: 230px; height: 34px; }
+  .chipGlow { width: 220px; height: 220px; }
+}
+
+@media (max-width: 600px) {
+  .navbar { padding: 14px 20px; }
+  .navCenter { gap: 16px; }
+  .navLink { font-size: 11px; }
+  .titleLine1, .titleLine2 { font-size: 32px; }
+  .chipScene { width: 280px; height: 280px; }
+  .chipBody { width: 140px; height: 140px; }
+  .chipFace { inset: 14px; }
+  .chipText { font-size: 34px; }
+  .orbitRing { width: 210px; height: 210px; }
+  .energyRing { width: 150px; height: 150px; }
+  .chipPlatform { width: 190px; height: 28px; }
+  .chipGlow { width: 180px; height: 180px; }
+}

@@ -1,0 +1,65 @@
+.chatArea { display: flex; flex-direction: column; gap: 24px; padding: 20px 24px 24px; }
+.userRow { display: flex; justify-content: flex-end; }
+.userBubble {
+  background: var(--bg-tab); border-radius: 18px; padding: 12px 18px;
+  font-size: 14px; color: var(--text-primary); max-width: 80%; line-height: 1.5;
+  transition: background 0.3s;
+}
+.assistantRow { display: flex; flex-direction: column; gap: 6px; }
+.assistantText { font-size: 14px; color: var(--text-secondary); line-height: 1.65; font-style: italic; }
+.searchLabel {
+  display: flex; align-items: center; gap: 4px; font-size: 13px;
+  color: var(--text-muted); cursor: pointer;
+}
+.searchLabel:hover { color: var(--text-secondary); }
+.searchChevron { font-size: 11px; margin-top: 1px; }
+.typingIndicator { padding-top: 4px; }
+
+/* Animated AICaffe logo typing indicator */
+.typingLogo {
+  width: 28px; height: 28px; object-fit: contain;
+  animation: logoThink 2s ease-in-out infinite;
+}
+
+@keyframes logoThink {
+  0%, 100% { opacity: 0.4; transform: scale(0.9) rotate(0deg); filter: drop-shadow(0 0 0 transparent); }
+  25% { opacity: 0.9; transform: scale(1.05) rotate(-5deg); filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.4)); }
+  50% { opacity: 1; transform: scale(1.1) rotate(0deg); filter: drop-shadow(0 0 10px rgba(217, 119, 6, 0.6)); }
+  75% { opacity: 0.9; transform: scale(1.05) rotate(5deg); filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.4)); }
+}
+
+/* ── Streaming animations ── */
+.msgFadeIn {
+  animation: msgSlideIn 0.35s ease-out both;
+}
+
+@keyframes msgSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Blinking cursor while streaming */
+.streamCursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #D4782A;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: cursorBlink 0.6s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Search label fade-in */
+.searchLabelFade {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,14 @@
+.card {
+  width: 210px; background: var(--bg-surface); border-radius: 14px;
+  box-shadow: var(--overlay-shadow); padding: 4px; transition: background 0.3s;
+}
+.header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 8px; }
+.title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.list { display: flex; flex-direction: column; gap: 1px; }
+.item {
+  display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+  border-radius: 8px; cursor: pointer; transition: background 0.15s;
+  color: var(--text-muted);
+}
+.item:hover { background: var(--bg-surface-hover); }
+.label { font-size: 13.5px; color: var(--text-secondary); }
