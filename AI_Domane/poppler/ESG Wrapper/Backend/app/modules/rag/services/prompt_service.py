@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Prompt Builder — assembles prompts for the two-pass LLM pipeline.
 

@@ -57,6 +57,10 @@ const AI_MODELS = [
   { id: 'qwen3-coder:480b', label: 'Qwen3-Coder' },
   { id: 'mistral-large-3:675b', label: 'Mistral-Large-3' },
   { id: 'gpt-oss:20b', label: 'GPT-OSS' },
+  // ── Local llama.cpp models (running on this Mac Mini) ──
+  { id: 'llama-1b', label: '🖥️ Llama 1B (Local)' },
+  { id: 'deepseek-1b', label: '🖥️ DeepSeek 1B (Local)' },
+  { id: 'r1-1b', label: '🖥️ R1 1B (Local)' },
 ];
 
 const ChatBot: React.FC<ChatBotProps> = ({ userName, userLastName, userEmail, topics, onLogout }) => {
@@ -457,7 +461,14 @@ const ChatBot: React.FC<ChatBotProps> = ({ userName, userLastName, userEmail, to
   }
   const [activeSessions, setActiveSessions] = useState<SessionData[]>([]);
   const [sessionsLoading, setSessionsLoading] = useState(false);
-  const [orgId] = useState(() => crypto.randomUUID());
+  const [orgId] = useState(() =>
+    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+          const r = Math.random() * 16 | 0;
+          return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        })
+  );
 
   const fetchSessions = async () => {
     setSessionsLoading(true);
@@ -773,7 +784,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ userName, userLastName, userEmail, to
 
   // ── SSE streaming — bypass Vite proxy (calls Node.js directly in dev) ──
   // In dev Vite buffers SSE, so we hit port 3001 directly. In prod, same origin.
-  const STREAM_BASE = import.meta.env.DEV ? 'http://localhost:3001' : '';
+  const STREAM_BASE = import.meta.env.DEV ? 'http://192.168.2.13:3001' : '';
 
   const readSSEStream = async (
     res: globalThis.Response,

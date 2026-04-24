@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 LLM factory — routes to the correct provider based on the selected model:
   • gpt         → OpenAI API   (if OPENAI_API_KEY is set)
