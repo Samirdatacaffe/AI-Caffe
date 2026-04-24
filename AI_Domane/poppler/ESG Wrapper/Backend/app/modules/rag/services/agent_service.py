@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Agent service — LangGraph orchestrator with per-model streaming.
 

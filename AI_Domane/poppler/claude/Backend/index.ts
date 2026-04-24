@@ -18,7 +18,11 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests from the configured frontend URL, common dev ports, and no-origin (e.g. curl)
-    const allowed = [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'];
+    const allowed = [
+      FRONTEND_URL,
+      'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175',
+      'http://192.168.2.13:5173',  // LAN access for team
+    ];
     if (!origin || allowed.includes(origin)) {
       callback(null, true);
     } else {

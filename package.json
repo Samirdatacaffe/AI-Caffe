@@ -1,0 +1,14 @@
+{
+  "name": "ai-caffe-wrapper",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --prefix-colors \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" --names \"BACKEND,FRONTEND,PYTHON\" \"npm:dev:backend\" \"npm:dev:frontend\" \"npm:dev:python\"",
+    "dev:backend": "npm run dev --prefix \"AI_Domane/poppler/claude/Backend\"",
+    "dev:frontend": "npm run dev --prefix \"AI_Domane/poppler/claude/Frontend\"",
+    "dev:python": "cd \"AI_Domane/poppler/ESG Wrapper/Backend\" && source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

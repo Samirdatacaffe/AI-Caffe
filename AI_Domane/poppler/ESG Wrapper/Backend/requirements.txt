@@ -14,11 +14,11 @@ langchain-chroma==0.2.2
 langchain-text-splitters==0.3.4
 
 # ── LangGraph (solution routing + pipeline orchestration) ─
-langgraph>=0.2.0
+langgraph==0.2.73
 
 # ── Embeddings (local) ────────────────────────────────
-sentence-transformers>=3.0.0
-einops>=0.8.0
+sentence-transformers==3.4.1
+einops==0.8.0
 
 # ── Vector DB ──────────────────────────────────────────
 chromadb==0.6.3

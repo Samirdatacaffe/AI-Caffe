@@ -101,13 +101,9 @@ async def health():
     }
 
 
-# ── Serve Frontend ─────────────────────────────────────
+# ── Root redirect ───────────────────────────────────────
 
 @app.get("/", include_in_schema=False)
-async def serve_frontend():
-    """Serve the chatbot frontend."""
-    return FileResponse(FRONTEND_DIR / "index.html")
-
-
-if FRONTEND_DIR.exists():
-    app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+async def root():
+    """API root — frontend is served by Vite on port 5173."""
+    return {"service": "ESGCaffe RAG API", "docs": "/docs", "health": "/health"}

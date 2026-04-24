@@ -38,11 +38,26 @@ interface ModelConfig {
   isAnthropic?: boolean;
 }
 
+// Local llama.cpp model IDs (served on this Mac Mini at port 8080)
+const LOCAL_MODELS = new Set(['llama-1b', 'deepseek-1b', 'r1-1b']);
+
 function getModelConfig(model?: string): ModelConfig | null {
   const ollamaKey = process.env.OLLAMA_API_KEY;
-  const ollamaBase = (process.env.OLLAMA_BASE_URL || 'https://ollama.com/v1').replace(/\/+$/, '');
+  const ollamaBase = (process.env.OLLAMA_BASE_URL || 'https://api.ollama.com/v1').replace(/\/+$/, '');
+
+  const localKey = process.env.LOCAL_LLAMA_API_KEY;
+  const localBase = (process.env.LOCAL_LLAMA_URL || 'http://localhost:8080/v1').replace(/\/+$/, '');
 
   const modelId = model || 'kimi-k2.5';
+
+  // Local llama.cpp models → route to local server (port 8080)
+  if (LOCAL_MODELS.has(modelId) && localKey) {
+    return {
+      apiUrl: `${localBase}/chat/completions`,
+      apiKey: localKey,
+      modelName: modelId,
+    };
+  }
 
   // Sonnet 4.6 → prefer Anthropic API if key available
   if (modelId === 'sonnet-4.6' && process.env.ANTHROPIC_API_KEY) {
@@ -63,7 +78,7 @@ function getModelConfig(model?: string): ModelConfig | null {
     };
   }
 
-  // All models route through Ollama Cloud (OpenAI-compatible endpoint)
+  // All other models → Ollama Cloud (OpenAI-compatible endpoint)
   if (ollamaKey) {
     return {
       apiUrl: `${ollamaBase}/chat/completions`,
@@ -124,6 +139,12 @@ export async function getAIResponse(
   const solutionId = solution || 'brew-generic-0.5';
 
   console.log(`[AI] model=${modelId}, solution=${solutionId}`);
+
+  // Local models → skip ESG/LangGraph service, call llama.cpp directly
+  if (LOCAL_MODELS.has(modelId)) {
+    console.log(`[AI] Local model detected — bypassing LangGraph, calling llama.cpp directly`);
+    return directFallback(messages, modelId, solutionId);
+  }
 
   // Primary: route through the Python LangGraph service
   try {
@@ -316,6 +337,33 @@ export async function streamAIResponse(
   const lastMsg = messages[messages.length - 1]?.content || '';
 
   console.log(`[AI Stream] model=${modelId}, solution=${solutionId}`);
+
+  // Local models → skip ESG/LangGraph service, call llama.cpp directly
+  if (LOCAL_MODELS.has(modelId)) {
+    console.log(`[AI Stream] Local model — bypassing LangGraph, streaming directly from llama.cpp`);
+    const config = getModelConfig(modelId);
+    if (!config) {
+      const msg = noConfigResponse(modelId);
+      onEvent({ type: 'token', content: msg });
+      onEvent({ type: 'done' });
+      return msg;
+    }
+    const systemPrompt = SOLUTION_PROMPTS[solutionId] || SOLUTION_PROMPTS['brew-generic-0.5'];
+    const fullMessages = trimHistory([
+      { role: 'system', content: systemPrompt },
+      ...messages.map((m) => ({ role: m.role, content: m.content })),
+    ]);
+    try {
+      return await streamOpenAICompatible(config, fullMessages, onEvent);
+    } catch (err) {
+      const raw = err instanceof Error ? err.message : 'Unknown error';
+      const errMsg = `⚠️ Error calling **${modelId}**: ${raw}`;
+      console.error(`[AI Stream Local Error] model=${modelId}:`, raw);
+      onEvent({ type: 'token', content: errMsg });
+      onEvent({ type: 'done' });
+      return errMsg;
+    }
+  }
 
   // 1) Try LangGraph service first
   try {
